@@ -1,20 +1,385 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MotoHouse | Volta Redonda</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="MotoHouse - Oficina especializada em manutenção, diagnóstico e motopeças em Volta Redonda RJ. Atendimento por agendamento.">
+<title>MotoHouse | Oficina e Motopeças</title>
+
+<style>
+:root {
+  --red: #e31b2b;
+  --black: #101010;
+  --dark: #191919;
+  --white: #ffffff;
+  --gray: #bdbdbd;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  line-height: 1.6;
+}
+
+header {
+  background: #080808;
+  padding: 18px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--red);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 27px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.logo span { color: var(--red); }
+
+nav {
+  display: flex;
+  gap: 25px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+nav a:hover { color: var(--red); }
+
+.hero {
+  min-height: 570px;
+  padding: 100px 8%;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(90deg, #090909 20%, #151515 100%);
+}
+
+.hero-content { max-width: 720px; }
+
+.tag {
+  color: var(--red);
+  font-weight: bold;
+  letter-spacing: 3px;
+  font-size: 13px;
+}
+
+h1 {
+  font-size: clamp(40px, 7vw, 68px);
+  line-height: 1.05;
+  margin: 20px 0;
+  font-weight: 900;
+}
+
+h1 span { color: var(--red); }
+
+.hero p {
+  color: var(--gray);
+  font-size: 18px;
+  max-width: 580px;
+  margin-bottom: 30px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 15px 25px;
+  background: var(--red);
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: .2s;
+}
+
+.btn:hover {
+  background: #b90e1b;
+  transform: translateY(-2px);
+}
+
+section { padding: 75px 8%; }
+
+.section-title {
+  font-size: 34px;
+  margin-bottom: 12px;
+}
+
+.section-title span { color: var(--red); }
+
+.subtitle {
+  color: var(--gray);
+  margin-bottom: 35px;
+}
+
+.services {
+  background: #151515;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: #202020;
+  padding: 28px;
+  border-bottom: 3px solid var(--red);
+  border-radius: 5px;
+}
+
+.card h3 {
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+
+.card p { color: var(--gray); }
+
+.about {
+  background: #101010;
+}
+
+.about-content {
+  max-width: 850px;
+}
+
+.about-content p {
+  color: var(--gray);
+  margin: 15px 0;
+  font-size: 17px;
+}
+
+.highlight {
+  color: var(--red);
+  font-weight: bold;
+}
+
+.parts {
+  background: #191919;
+}
+
+.contact {
+  text-align: center;
+  background: #111;
+}
+
+.contact p {
+  color: var(--gray);
+  margin: 12px 0;
+}
+
+.contact .btn { margin-top: 20px; }
+
+footer {
+  text-align: center;
+  padding: 25px;
+  background: #080808;
+  color: #888;
+  font-size: 13px;
+}
+
+.whatsapp {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  background: #20c767;
+  color: white;
+  padding: 15px 19px;
+  border-radius: 40px;
+  text-decoration: none;
+  font-weight: bold;
+  z-index: 20;
+  box-shadow: 0 4px 15px #0008;
+}
+
+@media (max-width: 750px) {
+  header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  nav {
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  nav a { font-size: 12px; }
+
+  .hero {
+    min-height: 480px;
+    padding: 75px 7%;
+  }
+
+  .grid { grid-template-columns: 1fr; }
+
+  section { padding: 55px 7%; }
+
+  .whatsapp {
+    right: 12px;
+    bottom: 12px;
+  }
+}
+</style>
 </head>
+
 <body>
-    <h1>MotoHouse</h1>
-    <h2>Oficina e Motopeças</h2>
 
-    <p>Manutenção, diagnóstico e peças para motocicletas.</p>
+<header>
+  <div class="logo">MOTO<span>HOUSE</span></div>
 
-    <p>Volta Redonda - RJ</p>
+  <nav>
+    <a href="#inicio">INÍCIO</a>
+    <a href="#servicos">SERVIÇOS</a>
+    <a href="#pecas">MOTOPEÇAS</a>
+    <a href="#contato">CONTATO</a>
+  </nav>
+</header>
 
-    <a href="https://wa.me/5524993241913">
-        Fale conosco pelo WhatsApp
+<main>
+<section class="hero" id="inicio">
+  <div class="hero-content">
+    <div class="tag">OFICINA E MOTOPEÇAS • VOLTA REDONDA</div>
+
+    <h1>SUA MOTO MERECE UM <span>SERVIÇO DE VERDADE.</span></h1>
+
+    <p>
+      Manutenção, diagnóstico técnico e motopeças.
+      Trabalhamos com responsabilidade, precisão e atenção
+      a cada detalhe da sua motocicleta.
+    </p>
+
+    <a class="btn"
+       href="https://wa.me/5524993241913"
+       target="_blank">
+       AGENDAR ATENDIMENTO
     </a>
+  </div>
+</section>
+
+<section class="services" id="servicos">
+  <h2 class="section-title">NOSSOS <span>SERVIÇOS</span></h2>
+  <p class="subtitle">
+    Cuidado técnico para manter sua motocicleta em boas condições.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Diagnóstico técnico</h3>
+      <p>Investigação de falhas mecânicas e elétricas com equipamentos e testes adequados.</p>
+    </div>
+
+    <div class="card">
+      <h3>Sistema de freios</h3>
+      <p>Inspeção e manutenção de pastilhas, discos, fluido e componentes de frenagem.</p>
+    </div>
+
+    <div class="card">
+      <h3>Suspensão</h3>
+      <p>Manutenção e avaliação dos componentes dianteiros e traseiros.</p>
+    </div>
+
+    <div class="card">
+      <h3>Troca de óleo</h3>
+      <p>Manutenção preventiva com atenção à especificação recomendada para cada moto.</p>
+    </div>
+
+    <div class="card">
+      <h3>Revisões gerais</h3>
+      <p>Verificação dos principais sistemas e componentes da motocicleta.</p>
+    </div>
+
+    <div class="card">
+      <h3>Mecânica especializada</h3>
+      <p>Serviços de motor, embreagem, transmissão e sistemas de alimentação.</p>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="about-content">
+    <h2 class="section-title">POR QUE ESCOLHER A <span>MOTOHOUSE?</span></h2>
+
+    <p>
+      Acreditamos que uma manutenção bem feita começa com
+      um diagnóstico correto.
+    </p>
+
+    <p>
+      Nosso trabalho é identificar a causa do problema,
+      avaliar as condições dos componentes e apresentar
+      uma solução técnica antes de executar o serviço.
+    </p>
+
+    <p class="highlight">
+      Sem adivinhação. Sem troca desnecessária de peças.
+      Compromisso com um serviço bem executado.
+    </p>
+
+    <p>Atendimento mediante agendamento.</p>
+  </div>
+</section>
+
+<section class="parts" id="pecas">
+  <h2 class="section-title">MOTOPEÇAS <span>MOTOHOUSE</span></h2>
+
+  <p class="subtitle">
+    Peças e componentes para manutenção da sua motocicleta.
+    Consulte disponibilidade e aplicação pelo WhatsApp.
+  </p>
+
+  <a class="btn"
+     href="https://wa.me/5524993241913?text=Olá! Gostaria de consultar a disponibilidade de uma peça."
+     target="_blank">
+     CONSULTAR PEÇAS
+  </a>
+</section>
+
+<section class="contact" id="contato">
+  <h2 class="section-title">FALE COM A <span>MOTOHOUSE</span></h2>
+
+  <p><strong>Endereço:</strong></p>
+  <p>Av. Nossa Senhora da Conceição, nº 150</p>
+  <p>Conforto - Volta Redonda - RJ</p>
+
+  <p><strong>WhatsApp: (24) 99324-1913</strong></p>
+
+  <a class="btn"
+     href="https://wa.me/5524993241913"
+     target="_blank">
+     CONVERSAR PELO WHATSAPP
+  </a>
+</section>
+</main>
+
+<footer>
+  © 2026 MotoHouse - Oficina e Motopeças.
+  Todos os direitos reservados.
+</footer>
+
+<a class="whatsapp"
+   href="https://wa.me/5524993241913"
+   target="_blank"
+   aria-label="Fale com a MotoHouse pelo WhatsApp">
+   WhatsApp
+</a>
+
 </body>
 </html>
